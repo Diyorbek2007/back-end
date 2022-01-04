@@ -12,6 +12,7 @@ const {
   deleteProductById,
   getProducts,
 } = require("../controller/product");
+// const multer = require("multer");
 const multer = require("multer");
 const router = express.Router();
 const shortid = require("shortid");
@@ -32,7 +33,7 @@ router.post(
   "/product/create",
   requireSignin,
   adminMiddleware,
-  uploadS3.array("productPicture"),
+  uploadS3.array("productPictures"),
   createProduct
 );
 router.get("/products/:slug", getProductsBySlug);

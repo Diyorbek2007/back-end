@@ -31,7 +31,7 @@ exports.addCategory = (req, res) => {
     slug: `${slugify(req.body.name)}-${shortid.generate()}`,
     createdBy: req.user._id,
   };
-
+  // console.log(categoryObj)
   if (req.file) {
     categoryObj.categoryImage = "/public/" + req.file.filename;
   }

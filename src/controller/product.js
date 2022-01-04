@@ -112,7 +112,7 @@ exports.deleteProductById = (req, res) => {
   } else {
     res.status(400).json({ error: "Params required" });
   }
-};
+  }
 
 exports.getProducts = async (req, res) => {
   const products = await Product.find({ createdBy: req.user._id })

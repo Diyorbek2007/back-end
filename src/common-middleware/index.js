@@ -18,8 +18,8 @@ const accessKeyId = process.env.accessKeyId;
 const secretAccessKey = process.env.secretAccessKey;
 
 const s3 = new aws.S3({
-  accessKeyId,
-  secretAccessKey,
+  accessKeyId : 'AKIAZGTL2QH7EY2BFYHN',
+  secretAccessKey: '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',
 });
 
 exports.upload = multer({ storage });
@@ -27,7 +27,7 @@ exports.upload = multer({ storage });
 exports.uploadS3 = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "flipkart-clone-app",
+    bucket: "itech-flipcart",
     acl: "public-read",
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
@@ -67,7 +67,7 @@ exports.adminMiddleware = (req, res, next) => {
 };
 
 exports.superAdminMiddleware = (req, res, next) => {
-  if (req.user.role !== "super-admin") {
+  if (req.user.role !== "user") {
     return res.status(200).json({ message: "Super Admin access denied" });
   }
   next();
